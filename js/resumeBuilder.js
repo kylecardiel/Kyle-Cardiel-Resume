@@ -1,36 +1,72 @@
+var navBarButtons = {
+	"navBarButton": [
+	{"name" : "Home",},
+	{"name" : "Resume",},
+	{"name" : "Portfolio",},
+	{"name" : "Fun?",},
+	{"name" : "About Me",},
+	{"name" : "Contact Me",},
+	]
+}
+
+navBarButtons.display = function() {
+	
+	var formattedNavBarButtons = '';
+	for (nbb in navBarButtons.navBarButton){
+		formattedNavBarButtons += HTMLnavBarButtons.replace("%data%", navBarButtons.navBarButton[nbb].name);
+	}
+	var formattedNavBar = HTMLnavBarButtonsStart + formattedNavBarButtons + HTMLnavBarButtonsEnd
+	$("#main").prepend(formattedNavBar);
+
+}
+
+navBarButtons.display();
+
+
 var bio = {
 	"name" : "Kyle Cardiel",
 	"role" : "Programming Analyst",
 	"contacts": {
 		"mobile" : "847-917-1280",
 		"email" : "kyle.cardiel@gmail.com",
-		"twitter" : "https://twitter.com/KyleCardiel",
-		"github" : "https://github.com/kylecardiel",
+		"twitter" : "@kylecardiel",
+		"github" : "github.com/kylecardiel",
+		"linkedIn" :  "linkedin.com/in/kylecardiel",
 		"location" : "Chicago, IL",
 	},
 	"pictureURL" : "https://pbs.twimg.com/profile_images/659090458249961473/JTeo_-md.jpg",
-	"welcomeMsg" : "Welcome to my page..",
-	"skills" : ["Programming","Business","Teaching","Coaching"]
+	"welcomeMsg" : "Hello!  I am a Programming Analyst at the Option Clearing Corporation."
+					+ "I am looking to utilize my strong foundation in software design and development principals," 
+					+ "business experience and education to translate business goals/needs into easily obtainable, "
+					+ "reliable results. In addition, I have over 3 years of internal audit work experience including; "
+					+ "analyzing operational processes and financial products, risk and internal control assessment, "
+					+ "decision-making and analytical thinking.",
+	"skills" : ["Object-Oriented Design & Development","Relational Database Systems","Java",
+				"Spring Framework","SDLC","SQL","HTML","CSS","Javascript",
+				"Swift/iOS/xcode","Process Analysis","Commmnication","Internal control analysis"]
 };
 
 bio.displayBio = function() {
+	
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-
-	$("#header").prepend(formattedRole);
-	$("#header").prepend(formattedName);
-
+	
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	var formattedLinkedIn = HTMLlinkedIn.replace("%data%", bio.contacts.linkedIn);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 	var formattedBioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+	
 	$("#header").append(formattedMobile);
 	$("#header").append(formattedEmail);
 	$("#header").append(formattedTwitter);
+	$("#header").append(formattedLinkedIn);
 	$("#header").append(formattedGithub);
 	$("#header").append(formattedLocation);
 	$("#header").append(formattedBioPic);
@@ -40,20 +76,15 @@ bio.displayBio = function() {
 bio.displaySkills = function() {
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-		$("#skills").append(formattedSkill);
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-		$("#skills").append(formattedSkill);
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-		$("#skills").append(formattedSkill);
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-		$("#skills").append(formattedSkill);
+		for (skill in bio.skills){
+			var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+			$("#skills").append(formattedSkill);
+		}
 	}
 }
 
 bio.displayBio();
 bio.displaySkills();
-
 
 var work = {
 	"jobs": [
@@ -61,68 +92,91 @@ var work = {
 		"employer" : "Options Clearing Corporation",
 		"title" : "Programming Analyst",
 		"location" : "Chicago, IL",
-		"dates" : "2014 - Present",
-		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. ",
+		"dates" : "November 2015 - Present",
+		"description" : "SQL. Design. Integration Test. Internal Customer Commmnication...",
+		"website" : "http://www.theocc.com",
+	},
+	{
+		"employer" : "",
+		"title" : "System Analyst - Intern",
+		"location" : "",
+		"dates" : "December 2014 - November 2015",
+		"description" : "Analyze a project’s business requirements and approaches dealing with various systems. "
+						+ "Facilitate communication between business end users and technical development team to ensure thorough understanding of project objectives. "
+						+ "Design web application screen/layout to meet project requirements and business user needs. "
+						+ "Design and execute test suites for integration testing.",
+		"website" : "",
+	},
+	{
+		"employer" : "Elite Soccer Club",
+		"title" : "Trainer",
+		"location" : "Arlington Heights, IL",
+		"dates" : "September 2013 - Present",
+		"description" : "Train/Coach Youth soccer program",
+		"website" : "http://www.elitesoccer.net",
+	},
+	{
+		"employer" : "Top Rate Tutors",
+		"title" : "Math Tutor, Algebra - Calculus",
+		"location" : "Winnetka, IL",
+		"dates" : "August 2012 - Present",
+		"description" : "Ensure students understand major concepts and practical application of math principals",
+		"website" : "http://www.topratetutors.com",
 	},
 	{
 		"employer" : "DeVry Education Group",
 		"title" : "Auditor II",
 		"location" : "Downers Grove, IL",
-		"dates" : "2013 - 2014",
+		"dates" : "November 2013 - September 2014",
 		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. "
 							+ "Provide recommendations based on isolating, identifying and solving audit issues. " 
 							+ "Communicate with process owners and management by interviewing and reporting findings, observations. "
 							+ "Write reports for senior management detailing audit findings, conclusions, and recommended corrective actions plans.",
+		"website" : "http://www.devryeducationgroup.com",
 	},
 	{
 		"employer" : "Career Education Corporation",
 		"title" : "Assoicate Auditor",
 		"location" : "Schaumbrug, IL",
-		"dates" : "2011 - 2013",
-		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. ",
+		"dates" : "June 2012 – November 2013",
+		"description" : "Conduct post-secondary school and company operational audits to evaluate adequacy and effectiveness of internal controls. "
+							+ "Provide recommendations based on isolating, identifying and solving audit issues. "
+							+ "Communicate with school’s upper management by reporting findings, observations and an audit summary. "
+							+ "Write reports for senior management detailing audit findings, conclusions, and recommended corrective actions plans. "
+							+ "Perform Entity-Level Control testing for compliance with Sarbanes Oxley section 404. "
+							+ "Assisted in special fraud investigations, including; collecting, analyzing, and reporting findings to senior audit management. "
+							+ "Developing a website to centralize, organize Company and department policies and procedures. "
+							+ "Obtained greater knowledge of post-secondary educational operations and industry from recruiting through post graduation career placement.",
+		"website" : "http://www.careered.com",
 	},
 	{
-		"employer" : "Career Education Corporation",
-		"title" : "Assoicate Auditor",
+		"employer" : "",
+		"title" : "Staff Auditor",
 		"location" : "Schaumbrug, IL",
-		"dates" : "2011 - 2013",
-		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. ",
-	},
-	{
-		"employer" : "Career Education Corporation",
-		"title" : "Assoicate Auditor",
-		"location" : "Schaumbrug, IL",
-		"dates" : "2011 - 2013",
-		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. ",
-	},
-	{
-		"employer" : "Career Education Corporation",
-		"title" : "Assoicate Auditor",
-		"location" : "Schaumbrug, IL",
-		"dates" : "2011 - 2013",
-		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. ",
+		"dates" : "February 2011 – June 2012",
+		"description" : "",
+		"website" : "",
 	}
 	]
 }
 
 work.displayWork = function () {
-	
+	$("#workExperience").append(HTMLworkStart);
 	for (job in work.jobs){
-		$("#workExperience").append(HTMLworkStart);
 
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-		$(".work-entry:last").append(formattedEmployerTitle);
-
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("%url%", work.jobs[job].website);
 		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		var formattedEmployerInfo = formattedEmployer + formattedLocation;
+		
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var formattedPositionInfo = formattedTitle + formattedDates;
+		
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-
-		$(".work-entry:last").append(formattedLocation);
-		$(".work-entry:last").append(formattedDates);
-		$(".work-entry:last").append(formattedDescription);
+		
+		$(".work-entry-grid:last").append(formattedEmployerInfo);
+		$(".work-entry-grid:last").append(formattedPositionInfo);
+		$(".work-entry-grid:last").append(formattedDescription);
 	}
 }
 
@@ -134,37 +188,32 @@ var projects = {
 		"title" : "Elevator Simulation",
 		"dates" : "2015",
 		"description" : "Object Oriented Software Development elvator simulation",
-		"image" : null,
 	},
 	{
 		"title" : "Trip App",
 		"dates" : "2015",
 		"description" : "iOS based applicaiton",
-		"image" : null,
 	},
 	{
 		"title" : "FEWD",
 		"dates" : "2016",
 		"description" : "under development",
-		"image" : null,
 	}
 	]
 }
 
 projects.display = function() {
-	
+	$("#projects").append(HTMLprojectStart);
 	for (pj in projects.project){
-		$("#projects").append(HTMLprojectStart);
 
 		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[pj].title);
 		var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.project[pj].dates);
-		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.project[pj].description);
-		//var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.project[pj].image);
+		var formattedProjectInfo = formattedProjectTitle + formattedProjectDates;
 
-		$(".project-entry:last").append(formattedProjectTitle);
-		$(".project-entry:last").append(formattedProjectDates);
-		$(".project-entry:last").append(formattedProjectDescription);
-		//$(".project-entry:last").append(formattedProjectImage);
+		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.project[pj].description);
+
+		$(".project-entry-grid:last").append(formattedProjectInfo);
+		$(".project-entry-grid:last").append(formattedProjectDescription);
 	}
 
 }
@@ -178,106 +227,148 @@ var education = {
 			"location" : "Chicago, IL",
 			"degree" : "Master of Scence in Computer Science",
 			"majors" : ["Software and System Development"],
-			"dates" : "2014 - 2015",
+			"dates" : "September 2014 - November 2015",
 			"url" : "www.depaul.edu",
+			"courses" : ["Discrete Structures for CS",
+							"Introduction to Programming (Python)",
+							"Data Structures I (Java, Eclipse)",
+							"Data Structures II (Java, Eclipse)",
+							"Systems I (C)",
+							"Systems II (C)",
+							"Applied Algorithms and Structures (Java, Eclipse)",
+							"Data Analysis and Regression (SAS)",
+							"Distributed Systems I (Java, Eclipse)",
+							"Framework for Web Application Development (TBD)",
+							"Programming Language Concepts (Scheme, Scala)",
+							"Database Technologies (SQL)",
+							"Mobile Application Development of iOS (Swift, Xcode)",
+							"Graduate Internship",
+							"Object Oriented Modeling",
+							"Software Testing and Quality Assurance (Java, Eclipse)",
+							"Object Oriented Software Development (Java, Eclipse)",
+							"Enterprise Component Architecture (Java EE, Glassfish, Netbeans)"]
 		},
 		{
 			"name" : "Drake University",
 			"location" : "Des Moines, IA",
 			"degree" : "Bachelor of Scence in Business Administration",
 			"majors" : ["Actuarial Scence","Finance"],
-			"dates" : "2006 - 2010",
+			"dates" : "August 2006 - May 2010",
 			"url" : "www.drake.edu",
+			"courses" : ["Introduction to Probability I (Exam P)",
+							" Introduction to Probability II (Exam C)",
+							"Statistical Modeling and Data Analysis I (Exam C)",
+							"Statistical Modeling and Data Analysis II (Exam C)",
+							"Theory of Interest (Exam FM)",
+							"Life Insurance Math I (Exam MLC)",
+							"Life Insurance Math II (Exam MLC)",
+							"Credibility and Simulation (Exam C)",
+							"Corporate Finance",
+							"Advance Corporate Finance",
+							"Financial Institutions, Instruments, and Markets",
+							"Financial Institution Management",
+							"Derivatives Mathematics (Exam MFE)",
+							"Portfolio Analysis",
+							"Introduction to Accounting I",
+							"Introduction to Accounting II",
+							"Principals of Marcoeconomics",
+							"Principals of Mircoeconomics",
+							"Money and Banking",
+							"Information Systems and E-Commerce",
+							"Management of Operations",
+							"Marketing Prinicpals",
+							"Linear Algebra",
+							"Calculus III"]
 		}
 	],
 	"onlineSchools": [
 		{
-			"title" : "Frontend Web Development",
+			"title" : "Frontend Web Development Nano-Degree",
 			"school" : "Udacity",
 			"dates" : "2016 - Present",
-			"url" : "www.Udacity.edu",
+			"url" : "www.Udacity.com",
 		}
 	]	
 }
 
 education.display = function() {
-	
+	$("#education").append(HTMLschoolStart);
 	for (school in education.schools){
-		$("#education").append(HTMLschoolStart);
 
-		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name).replace("%url%", education.schools[school].website);
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		var formattedSchoolInfo = formattedSchoolName + formattedSchoolLocation;
+
 		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		var formattedDegreeInfo = formattedSchoolDegree + formattedSchoolDates;
+		
 		var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		var fromattedSchoolCourses = HTMLschoolCourses;
 
-		$(".education-entry:last").append(formattedSchoolName);
-		$(".education-entry:last").append(formattedSchoolDegree);
-		$(".education-entry:last").append(formattedSchoolDates);
-		$(".education-entry:last").append(formattedSchoolLocation);
-		$(".education-entry:last").append(formattedschoolMajor);
+		$(".education-entry-grid:last").append(formattedSchoolInfo);
+		$(".education-entry-grid:last").append(formattedDegreeInfo);
+		$(".education-entry-grid:last").append(formattedschoolMajor);
+		$(".education-entry-grid:last").append(fromattedSchoolCourses);
 	}
 
+	$(".education-entry-grid:last").append(HTMLonlineClasses);
 	for (onlineSchool in education.onlineSchools){
 
-		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineSchools[onlineSchool].title);
-		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineSchools[onlineSchool].school);
-		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineSchools[onlineSchool].dates);
-		var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineSchools[onlineSchool].url);
 
-		$(".education-entry:last").append(HTMLonlineClasses);
-		$(".education-entry:last").append(formattedOnlineTitle);
-		$(".education-entry:last").append(formattedOnlineSchool);
-		$(".education-entry:last").append(formattedOnlineDates);
-		$(".education-entry:last").append(formattedOnlineURL);
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineSchools[onlineSchool].school);
+		var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineSchools[onlineSchool].url);
+		var formattedSchoolInfo = formattedOnlineSchool + formattedOnlineURL;
+
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineSchools[onlineSchool].title);
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineSchools[onlineSchool].dates);
+		var formattedDegreeInfo = formattedOnlineTitle + formattedOnlineDates
+
+		$(".education-entry-grid:last").append(formattedSchoolInfo);
+		$(".education-entry-grid:last").append(formattedDegreeInfo);
 	}
 
 }
 
 education.display();
 
-var certifications = {
-	"certification": [
-		{
-			"name" : "Certified Internal Auditor (CIA)",
-			"oragnization" : "Institute of Internal Auditors (IIA)",
-			"id" : "xxxxxx",
-			"date" : "2013",
-		},
-		{
-			"name" : "National Youth E License",
-			"oragnization" : "US Soccer",
-			"id" : "xxxxxx",
-			"date" : "2014",
-		}
-	]
-}
+
+$("mapDiv").append(googleMap);
+initializeMap();
 
 
-
-// $("mapDiv").append(googleMap);
-// $(document).click(function(loc) {
-// 	var x = loc.pageX;
-// 	var y = loc.pageY;
-// 	logClicks(x,y);
-// });
-
-// function inName(name) {
-// 	name = name.trim().split(" ");
-// 	console.log(name);
-// 	name[1] = name[1].toUpperCase();
-// 	name[0] = name[0].slice(0,1).toUpperCase();
-// 		name[0].slice(1).toLowerCase();
-
-// 	return name[0] + " " + name[1];
+// var certifications = {
+// 	"certification": [
+// 		{
+// 			"name" : "Certified Internal Auditor (CIA)",
+// 			"oragnization" : "Institute of Internal Auditors (IIA)",
+// 			"id" : "xxxxxx",
+// 			"date" : "2013",
+// 		},
+// 		{
+// 			"name" : "National Youth E License",
+// 			"oragnization" : "US Soccer",
+// 			"id" : "xxxxxx",
+// 			"date" : "2014",
+// 		}
+// 	]
 // }
 
-// inName(bio.name);
-// $("#main").append(internationalizeButton);
+// certifications.display = function() {
+	
+// 	$("#certifications").append(HTMLcertificationStart);
+// 	for (cert in certifications.certification){
 
+// 		var formattedCertificationName = HTMLcertificationName.replace("%data%", certifications.certification[cert].name);
+// 		var formattedCertificationDate = HTMLcertificationDate.replace("%data%", certifications.certification[cert].date);
+// 		var formattedcertification = formattedCertificationName + formattedCertificationDate;
 
+// 		$(".certification-entry-grid:last").append(formattedcertification);
+// 	}
 
+// }
 
+// certifications.display();
 
 
 
