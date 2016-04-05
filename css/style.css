@@ -286,7 +286,7 @@ span {
 
 
 .navbar-grid {
-  margin: 0 auto%;
+  margin: 0 auto;
   max-width: 1200px;
   width: 100%;
 
@@ -302,7 +302,6 @@ span {
 
 .row {
   width: 100%;
-
   display: flex;
   flex-wrap: wrap;
 }

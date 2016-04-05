@@ -9,6 +9,7 @@ var navBarButtons = {
 	]
 }
 
+// Add button functionality once pages are created later...
 navBarButtons.display = function() {
 	
 	var formattedNavBarButtons = '';
@@ -41,9 +42,9 @@ var bio = {
 					+ "reliable results. In addition, I have over 3 years of internal audit work experience including; "
 					+ "analyzing operational processes and financial products, risk and internal control assessment, "
 					+ "decision-making and analytical thinking.",
-	"skills" : ["Object-Oriented Design & Development","Relational Database Systems","Java",
-				"Spring Framework","SDLC","SQL","HTML","CSS","Javascript",
-				"Swift/iOS/xcode","Process Analysis","Commmnication","Internal control analysis"]
+	"skills" : ["Object-Oriented Design & Development","- Relational Database Systems","- Java",
+				"- Spring Framework","- SDLC","- SQL","- HTML","- CSS","- Javascript?",
+				"- Swift/iOS/xcode","- Process Analysis","- Commmnication","- Internal control analysis"]
 };
 
 bio.displayBio = function() {
@@ -152,9 +153,9 @@ var work = {
 	{
 		"employer" : "",
 		"title" : "Staff Auditor",
-		"location" : "Schaumbrug, IL",
+		"location" : "",
 		"dates" : "February 2011 – June 2012",
-		"description" : "",
+		"description" : "Auditing Stuff",
 		"website" : "",
 	}
 	]
@@ -164,7 +165,13 @@ work.displayWork = function () {
 	$("#workExperience").append(HTMLworkStart);
 	for (job in work.jobs){
 
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("%url%", work.jobs[job].website);
+		var formattedEmployer;
+		if (work.jobs[job].employer.length > 0){
+			formattedEmployer = "<hr>" + HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("%url%", work.jobs[job].website);
+		} else {
+			formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("%url%", work.jobs[job].website);
+		}
+
 		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 		var formattedEmployerInfo = formattedEmployer + formattedLocation;
 		
@@ -228,7 +235,7 @@ var education = {
 			"degree" : "Master of Scence in Computer Science",
 			"majors" : ["Software and System Development"],
 			"dates" : "September 2014 - November 2015",
-			"url" : "www.depaul.edu",
+			"url" : "http://www.depaul.edu",
 			"courses" : ["Discrete Structures for CS",
 							"Introduction to Programming (Python)",
 							"Data Structures I (Java, Eclipse)",
@@ -254,7 +261,7 @@ var education = {
 			"degree" : "Bachelor of Scence in Business Administration",
 			"majors" : ["Actuarial Scence","Finance"],
 			"dates" : "August 2006 - May 2010",
-			"url" : "www.drake.edu",
+			"url" : "http://www.drake.edu",
 			"courses" : ["Introduction to Probability I (Exam P)",
 							" Introduction to Probability II (Exam C)",
 							"Statistical Modeling and Data Analysis I (Exam C)",
@@ -332,43 +339,20 @@ education.display = function() {
 
 education.display();
 
+//Add certifications section later..
 
-$("mapDiv").append(googleMap);
-initializeMap();
+function inName(name) {
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase();
+		name[0].slice(1).toLowerCase();
 
+	return name[0] + " " + name[1];
+}
 
-// var certifications = {
-// 	"certification": [
-// 		{
-// 			"name" : "Certified Internal Auditor (CIA)",
-// 			"oragnization" : "Institute of Internal Auditors (IIA)",
-// 			"id" : "xxxxxx",
-// 			"date" : "2013",
-// 		},
-// 		{
-// 			"name" : "National Youth E License",
-// 			"oragnization" : "US Soccer",
-// 			"id" : "xxxxxx",
-// 			"date" : "2014",
-// 		}
-// 	]
-// }
+inName(bio.name);
 
-// certifications.display = function() {
-	
-// 	$("#certifications").append(HTMLcertificationStart);
-// 	for (cert in certifications.certification){
-
-// 		var formattedCertificationName = HTMLcertificationName.replace("%data%", certifications.certification[cert].name);
-// 		var formattedCertificationDate = HTMLcertificationDate.replace("%data%", certifications.certification[cert].date);
-// 		var formattedcertification = formattedCertificationName + formattedCertificationDate;
-
-// 		$(".certification-entry-grid:last").append(formattedcertification);
-// 	}
-
-// }
-
-// certifications.display();
-
-
+$("#main").append(internationalizeButton);
+$("#mapDiv").append(googleMap);
 
