@@ -254,7 +254,7 @@ var education = {
 			"name" : "Drake University",
 			"location" : "Des Moines, IA",
 			"degree" : "Bachelor of Scence in Business Administration",
-			"majors" : ["Actuarial Scence/","Finance"],
+			"majors" : ["Actuarial Scence","Finance"],
 			"dates" : "August 2006 - May 2010",
 			"url" : "http://www.drake.edu",
 			"courses" : ["Introduction to Probability I (Exam P)",
@@ -309,12 +309,11 @@ education.display = function() {
 		$(".education-entry-grid:last").append(formattedSchoolInfo);
 		$(".education-entry-grid:last").append(formattedDegreeInfo);
 		$(".education-entry-grid:last").append(formattedschoolMajor);
-		$(".education-entry-grid:last").append(fromattedSchoolCourses);
 
-		var formattedShoolCoursesStart = HTMLschoolCoursesStart.replace("%school%", education.schools[school].name);
+		var formattedShoolCoursesStart = HTMLschoolCoursesStart.replace("%school%", education.schools[school].name.substring(0, 3));
 		$(".education-entry-grid").append(formattedShoolCoursesStart);
 		for (course in education.schools[school].courses){
-			var fromattedSchoolCourses = HTMLschoolCourses.replace("%data%", education.schools[school].courses[course]).replace("%school%", education.schools[school].name);
+			var fromattedSchoolCourses = HTMLschoolCourses.replace("%data%", education.schools[school].courses[course]).replace("%school%", education.schools[school].name.substring(0, 3));
 			$(".education-entry-grid:last").append(fromattedSchoolCourses);
 		}
 

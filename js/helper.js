@@ -40,12 +40,9 @@ var HTMLschoolLocation = '<div class="col-4-work"><div class="location-text">%da
 var HTMLschoolDegree = '<div class="row"><div class="col-2"></div><div class="col-4-work"><div class="job-title-color">%data%</div></div>';
 var HTMLschoolDates = '<div class="col-4-work"><div class="location-text">%data%</div></div><div class="col-2"></div></div>';
 var HTMLschoolMajor = '<div class="row"><div class="col-2"></div><div class="col-4-work">Major: %data%</div><div class="col-6"></div></div>';
-
-var HTMLschoolCoursesStart = '<div class="row"><div class="col-2"></div><a class="col-8-work" href="javascript:showhide(document.getElementById("%school%"))">Courses:</a>'
-                            + '<button onclick="javascript:showhide(document.getElementById("%school%"))" class="courseBTN">+/-</button><div class="col-2"></div></div>';
-
-
-var HTMLschoolCourses = '<div id="%school%" class="row-courses" style="display: none"><div class="col-2"></div><div class="col-8-work">%data%</div><div class="col-2"></div></div>';
+var HTMLschoolCoursesStart = '<div class="row"><div class="col-2"></div><div class="col-8-work">Courses:</div>'
+                            + '<button onclick=\"javascript:showhide(document.getElementById(\"%school%\"))\" class="courseBTN">+/-</button><div class="col-2"></div></div>';
+var HTMLschoolCourses = '<div id=\"%school%\" class="row" style="display: none"><div class="col-3"></div><div class="col-6-work">%data%</div><div class="col-3"></div></div>';
 
 var HTMLonlineClasses = '<h4>Online Classes</h4>';
 var HTMLonlineSchool = '<div class="row"><div class="col-1"></div><div class="col-5-work"><a href="%url%">%data%</a></div>';
@@ -64,7 +61,8 @@ var googleMap = '<div id="map"></div>';
 
 
 /*
-The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
+The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. 
+Don't delete! It hooks up your code to the button you'll be appending.
 */
 $(document).ready(function() {
   $('button').click(function() {
