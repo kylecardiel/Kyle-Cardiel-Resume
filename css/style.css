@@ -306,6 +306,12 @@ span {
   flex-wrap: wrap;
 }
 
+.row-courses{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .col-1 {width: 8.33%; text-align: center;}
 .col-2 {width: 16.66%; text-align: center;}
 .col-3 {width: 25%;}

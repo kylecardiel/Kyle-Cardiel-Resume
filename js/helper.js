@@ -40,7 +40,12 @@ var HTMLschoolLocation = '<div class="col-4-work"><div class="location-text">%da
 var HTMLschoolDegree = '<div class="row"><div class="col-2"></div><div class="col-4-work"><div class="job-title-color">%data%</div></div>';
 var HTMLschoolDates = '<div class="col-4-work"><div class="location-text">%data%</div></div><div class="col-2"></div></div>';
 var HTMLschoolMajor = '<div class="row"><div class="col-2"></div><div class="col-4-work">Major: %data%</div><div class="col-6"></div></div>';
-var HTMLschoolCourses = '<div class="row"><div class="col-2"></div><div class="col-4-work">Courses:</div><div class="col-6"></div></div>';
+
+var HTMLschoolCoursesStart = '<div class="row"><div class="col-2"></div><a class="col-8-work" href="javascript:showhide(document.getElementById("%school%"))">Courses:</a>'
+                            + '<button onclick="javascript:showhide(document.getElementById("%school%"))" class="courseBTN">+/-</button><div class="col-2"></div></div>';
+
+
+var HTMLschoolCourses = '<div id="%school%" class="row-courses" style="display: none"><div class="col-2"></div><div class="col-8-work">%data%</div><div class="col-2"></div></div>';
 
 var HTMLonlineClasses = '<h4>Online Classes</h4>';
 var HTMLonlineSchool = '<div class="row"><div class="col-1"></div><div class="col-5-work"><a href="%url%">%data%</a></div>';
@@ -48,8 +53,9 @@ var HTMLonlineDates = '<div class="col-4-work"><div class="location-text">%data%
 var HTMLonlineURL = '<div class="col-4-work"><div class="location-text">%data%</div></div><div class="col-2"></div></div>';
 var HTMLonlineTitle = '<div class="row"><div class="col-2"></div><div class="col-4-work"><div class="job-title-color">%data%</div></div>';
 
+
 var HTMLcertificationStart = '<div class="certification-entry-grid"></div>';
-var HTMLcertificationName = '<div class="row"><div class="col-1"></div><div class="col-5-work"><a href="">%data%</a></div>';
+var HTMLcertificationName = '<div id="courseSH" class="row"><div class="col-1"></div><div class="col-5-work"><a href="">%data%</a></div>';
 var HTMLcertificationDate = '<div class="col-4-work"><div class="location-text">%data%</div></div><div class="col-2"></div></div>';
 
 
@@ -244,3 +250,18 @@ window.addEventListener('resize', function(e) {
 //   Make sure the map bounds get updated on page resize
  map.fitBounds(mapBounds);
 });
+
+
+function showhide(elementIdInput) {
+  if (!document.getElementById) {
+    return
+  }
+  if (elementIdInput.style.display=="flex") {
+    elementIdInput.style.display="none"
+  }
+  else{
+    elementIdInput.style.display="flex"
+  }
+}
+
+

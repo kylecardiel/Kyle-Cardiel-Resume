@@ -35,19 +35,14 @@ var bio = {
 		"linkedIn" :  "linkedin.com/in/kylecardiel",
 		"location" : "Chicago, IL",
 	},
-	"pictureURL" : "https://pbs.twimg.com/profile_images/659090458249961473/JTeo_-md.jpg",
-	"welcomeMsg" : "Hello!  I am a Programming Analyst at the Option Clearing Corporation."
-					+ "I am looking to utilize my strong foundation in software design and development principals," 
-					+ "business experience and education to translate business goals/needs into easily obtainable, "
-					+ "reliable results. In addition, I have over 3 years of internal audit work experience including; "
-					+ "analyzing operational processes and financial products, risk and internal control assessment, "
-					+ "decision-making and analytical thinking.",
+	"biopic" : "https://pbs.twimg.com/profile_images/659090458249961473/JTeo_-md.jpg",
+	"welcomeMsg" : "Hello!  I am a Programming Analyst at the Option Clearing Corporation. I am looking to utilize my strong foundation in software design and development principals, business experience and education to translate business goals/needs into easily obtainable, reliable results. In addition, I have over 3 years of internal audit work experience including; analyzing operational processes and financial products, risk and internal control assessment, decision-making and analytical thinking.",
 	"skills" : ["Object-Oriented Design & Development","- Relational Database Systems","- Java",
 				"- Spring Framework","- SDLC","- SQL","- HTML","- CSS","- Javascript?",
 				"- Swift/iOS/xcode","- Process Analysis","- Commmnication","- Internal control analysis"]
 };
 
-bio.displayBio = function() {
+bio.display = function() {
 	
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -58,7 +53,7 @@ bio.displayBio = function() {
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 	var formattedLinkedIn = HTMLlinkedIn.replace("%data%", bio.contacts.linkedIn);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-	var formattedBioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
+	var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 
 	$("#header").prepend(formattedRole);
@@ -84,7 +79,7 @@ bio.displaySkills = function() {
 	}
 }
 
-bio.displayBio();
+bio.display();
 bio.displaySkills();
 
 var work = {
@@ -161,7 +156,7 @@ var work = {
 	]
 }
 
-work.displayWork = function () {
+work.display = function () {
 	$("#workExperience").append(HTMLworkStart);
 	for (job in work.jobs){
 
@@ -187,10 +182,10 @@ work.displayWork = function () {
 	}
 }
 
-work.displayWork();
+work.display();
 
 var projects = {
-	"project": [
+	"projects": [
 	{
 		"title" : "Elevator Simulation",
 		"dates" : "2015",
@@ -211,13 +206,13 @@ var projects = {
 
 projects.display = function() {
 	$("#projects").append(HTMLprojectStart);
-	for (pj in projects.project){
+	for (pj in projects.projects){
 
-		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[pj].title);
-		var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.project[pj].dates);
+		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[pj].title);
+		var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[pj].dates);
 		var formattedProjectInfo = formattedProjectTitle + formattedProjectDates;
 
-		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.project[pj].description);
+		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[pj].description);
 
 		$(".project-entry-grid:last").append(formattedProjectInfo);
 		$(".project-entry-grid:last").append(formattedProjectDescription);
@@ -259,7 +254,7 @@ var education = {
 			"name" : "Drake University",
 			"location" : "Des Moines, IA",
 			"degree" : "Bachelor of Scence in Business Administration",
-			"majors" : ["Actuarial Scence","Finance"],
+			"majors" : ["Actuarial Scence/","Finance"],
 			"dates" : "August 2006 - May 2010",
 			"url" : "http://www.drake.edu",
 			"courses" : ["Introduction to Probability I (Exam P)",
@@ -288,7 +283,7 @@ var education = {
 							"Calculus III"]
 		}
 	],
-	"onlineSchools": [
+	"onlineCourses": [
 		{
 			"title" : "Frontend Web Development Nano-Degree",
 			"school" : "Udacity",
@@ -309,26 +304,32 @@ education.display = function() {
 		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 		var formattedDegreeInfo = formattedSchoolDegree + formattedSchoolDates;
-		
 		var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-		var fromattedSchoolCourses = HTMLschoolCourses;
 
 		$(".education-entry-grid:last").append(formattedSchoolInfo);
 		$(".education-entry-grid:last").append(formattedDegreeInfo);
 		$(".education-entry-grid:last").append(formattedschoolMajor);
 		$(".education-entry-grid:last").append(fromattedSchoolCourses);
+
+		var formattedShoolCoursesStart = HTMLschoolCoursesStart.replace("%school%", education.schools[school].name);
+		$(".education-entry-grid").append(formattedShoolCoursesStart);
+		for (course in education.schools[school].courses){
+			var fromattedSchoolCourses = HTMLschoolCourses.replace("%data%", education.schools[school].courses[course]).replace("%school%", education.schools[school].name);
+			$(".education-entry-grid:last").append(fromattedSchoolCourses);
+		}
+
 	}
 
 	$(".education-entry-grid:last").append(HTMLonlineClasses);
-	for (onlineSchool in education.onlineSchools){
+	for (onlineSchool in education.onlineCourses){
 
 
-		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineSchools[onlineSchool].school);
-		var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineSchools[onlineSchool].url);
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineSchool].school);
+		var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineSchool].url);
 		var formattedSchoolInfo = formattedOnlineSchool + formattedOnlineURL;
 
-		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineSchools[onlineSchool].title);
-		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineSchools[onlineSchool].dates);
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineSchool].title);
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineSchool].dates);
 		var formattedDegreeInfo = formattedOnlineTitle + formattedOnlineDates
 
 		$(".education-entry-grid:last").append(formattedSchoolInfo);
