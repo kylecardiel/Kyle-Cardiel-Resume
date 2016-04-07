@@ -11,7 +11,7 @@ var navBarButtons = {
 
 // Add button functionality once pages are created later...
 navBarButtons.display = function() {
-	
+
 	var formattedNavBarButtons = '';
 	for (nbb in navBarButtons.navBarButton){
 		formattedNavBarButtons += HTMLnavBarButtons.replace("%data%", navBarButtons.navBarButton[nbb].name);
@@ -36,17 +36,17 @@ var bio = {
 		"location" : "Chicago, IL",
 	},
 	"biopic" : "https://pbs.twimg.com/profile_images/659090458249961473/JTeo_-md.jpg",
-	"welcomeMsg" : "Hello!  I am a Programming Analyst at the Option Clearing Corporation. I am looking to utilize my strong foundation in software design and development principals, business experience and education to translate business goals/needs into easily obtainable, reliable results. In addition, I have over 3 years of internal audit work experience including; analyzing operational processes and financial products, risk and internal control assessment, decision-making and analytical thinking.",
+	"welcomeMessage" : "Hello!  I am a Programming Analyst at the Option Clearing Corporation. I am looking to utilize my strong foundation in software design and development principals, business experience and education to translate business goals/needs into easily obtainable, reliable results. In addition, I have over 3 years of internal audit work experience including; analyzing operational processes and financial products, risk and internal control assessment, decision-making and analytical thinking.",
 	"skills" : ["Object-Oriented Design & Development","- Relational Database Systems","- Java",
 				"- Spring Framework","- SDLC","- SQL","- HTML","- CSS","- Javascript?",
 				"- Swift/iOS/xcode","- Process Analysis","- Commmnication","- Internal control analysis"]
 };
 
 bio.display = function() {
-	
+
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-	
+
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
@@ -54,11 +54,11 @@ bio.display = function() {
 	var formattedLinkedIn = HTMLlinkedIn.replace("%data%", bio.contacts.linkedIn);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 	var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
-	
+
 	$("#header").append(formattedMobile);
 	$("#header").append(formattedEmail);
 	$("#header").append(formattedTwitter);
@@ -67,9 +67,7 @@ bio.display = function() {
 	$("#header").append(formattedLocation);
 	$("#header").append(formattedBioPic);
 	$("#header").append(formattedWelcomeMsg);
-}
 
-bio.displaySkills = function() {
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
 		for (skill in bio.skills){
@@ -79,8 +77,8 @@ bio.displaySkills = function() {
 	}
 }
 
+
 bio.display();
-bio.displaySkills();
 
 var work = {
 	"jobs": [
@@ -125,7 +123,7 @@ var work = {
 		"location" : "Downers Grove, IL",
 		"dates" : "November 2013 - September 2014",
 		"description" : "Conduct compliance, regulatory operational and SOX audits to evaluate adequacy and effectiveness of internal controls. "
-							+ "Provide recommendations based on isolating, identifying and solving audit issues. " 
+							+ "Provide recommendations based on isolating, identifying and solving audit issues. "
 							+ "Communicate with process owners and management by interviewing and reporting findings, observations. "
 							+ "Write reports for senior management detailing audit findings, conclusions, and recommended corrective actions plans.",
 		"website" : "http://www.devryeducationgroup.com",
@@ -169,13 +167,13 @@ work.display = function () {
 
 		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 		var formattedEmployerInfo = formattedEmployer + formattedLocation;
-		
+
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
 		var formattedPositionInfo = formattedTitle + formattedDates;
-		
+
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-		
+
 		$(".work-entry-grid:last").append(formattedEmployerInfo);
 		$(".work-entry-grid:last").append(formattedPositionInfo);
 		$(".work-entry-grid:last").append(formattedDescription);
@@ -190,16 +188,19 @@ var projects = {
 		"title" : "Elevator Simulation",
 		"dates" : "2015",
 		"description" : "Object Oriented Software Development elvator simulation",
+		"images" : "null"
 	},
 	{
 		"title" : "Trip App",
 		"dates" : "2015",
 		"description" : "iOS based applicaiton",
+		"images" : "null"
 	},
 	{
 		"title" : "FEWD",
 		"dates" : "2016",
 		"description" : "under development",
+		"images" : "null"
 	}
 	]
 }
@@ -229,7 +230,7 @@ var education = {
 			"location" : "Chicago, IL",
 			"degree" : "Master of Scence in Computer Science",
 			"majors" : ["Software and System Development"],
-			"dates" : "September 2014 - November 2015",
+			"date" : "September 2014 - November 2015",
 			"url" : "http://www.depaul.edu",
 			"courses" : ["Discrete Structures for CS",
 							"Introduction to Programming (Python)",
@@ -255,7 +256,7 @@ var education = {
 			"location" : "Des Moines, IA",
 			"degree" : "Bachelor of Scence in Business Administration",
 			"majors" : ["Actuarial Scence","Finance"],
-			"dates" : "August 2006 - May 2010",
+			"date" : "August 2006 - May 2010",
 			"url" : "http://www.drake.edu",
 			"courses" : ["Introduction to Probability I (Exam P)",
 							" Introduction to Probability II (Exam C)",
@@ -287,10 +288,10 @@ var education = {
 		{
 			"title" : "Frontend Web Development Nano-Degree",
 			"school" : "Udacity",
-			"dates" : "2016 - Present",
+			"date" : "2016 - Present",
 			"url" : "www.Udacity.com",
 		}
-	]	
+	]
 }
 
 education.display = function() {
@@ -302,7 +303,7 @@ education.display = function() {
 		var formattedSchoolInfo = formattedSchoolName + formattedSchoolLocation;
 
 		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].date);
 		var formattedDegreeInfo = formattedSchoolDegree + formattedSchoolDates;
 		var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
 
@@ -328,7 +329,7 @@ education.display = function() {
 		var formattedSchoolInfo = formattedOnlineSchool + formattedOnlineURL;
 
 		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineSchool].title);
-		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineSchool].dates);
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineSchool].date);
 		var formattedDegreeInfo = formattedOnlineTitle + formattedOnlineDates
 
 		$(".education-entry-grid:last").append(formattedSchoolInfo);
