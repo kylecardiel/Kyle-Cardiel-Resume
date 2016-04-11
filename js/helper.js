@@ -1,6 +1,7 @@
 
 var HTMLnavBarButtonsStart = '<div class="navbar-grid"><div class="row">'
-var HTMLnavBarButtons = '<div class="col-2"><div class="navbar">%data%</div></div>'
+var HTMLnavBarButtons = '<div class="col-2"><div class="navbar"><a href="../../portfolio/framework/index.html">%data%</a></div></div>'
+// var HTMLnavBarButtons = '<div class="col-2"><div class="navbar">%data%</div></div>'
 var HTMLnavBarButtonsEnd = '</div></div>'
 
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
@@ -41,8 +42,11 @@ var HTMLschoolDegree = '<div class="row"><div class="col-2"></div><div class="co
 var HTMLschoolDates = '<div class="col-4-work"><div class="location-text">%data%</div></div><div class="col-2"></div></div>';
 var HTMLschoolMajor = '<div class="row"><div class="col-2"></div><div class="col-4-work">Major: %data%</div><div class="col-6"></div></div>';
 var HTMLschoolCoursesStart = '<div class="row"><div class="col-2"></div><div class="col-8-work">Courses:</div>'
-                            + '<button onclick=\"javascript:showhide(document.getElementById(\"%school%\"))\" class="courseBTN">+/-</button><div class="col-2"></div></div>';
-var HTMLschoolCourses = '<div id=\"%school%\" class="row" style="display: none"><div class="col-3"></div><div class="col-6-work">%data%</div><div class="col-3"></div></div>';
+                            + '<button onclick=\"javascript:showhide(document.getElementById(\'%school%\'))\" class="course-btn">+/-</button><div class="col-2"></div></div>'
+                            + '<div id=\"%schoolId%\" style="display: none"></div>';
+
+
+var HTMLschoolCourses = '<div class="row"><div class="col-3"></div><div class="col-6-course">%data%</div><div class="col-3"></div></div>';
 
 var HTMLonlineClasses = '<h4>Online Classes</h4>';
 var HTMLonlineSchool = '<div class="row"><div class="col-1"></div><div class="col-5-work"><a href="%url%">%data%</a></div>';
@@ -64,12 +68,12 @@ var googleMap = '<div id="map"></div>';
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run.
 Don't delete! It hooks up your code to the button you'll be appending.
 */
-$(document).ready(function() {
-  $('button').click(function() {
-    var iName = inName() || function(){};
-    $('#name').html(iName);
-  });
-});
+// $(document).ready(function() {
+//   $('button').click(function() {
+//     var iName = inName() || function(){};
+//     $('#name').html(iName);
+//   });
+// });
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
@@ -143,7 +147,10 @@ function initializeMap() {
     // as described in the Udacity FEND Style Guide:
     // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
     work.jobs.forEach(function(job){
-      locations.push(job.location);
+      if(job.location){
+        locations.push(job.location);
+      }
+
     });
 
     return locations;
@@ -254,11 +261,11 @@ function showhide(elementIdInput) {
   if (!document.getElementById) {
     return
   }
-  if (elementIdInput.style.display=="flex") {
+  if (elementIdInput.style.display=="initial") {
     elementIdInput.style.display="none"
   }
   else{
-    elementIdInput.style.display="flex"
+    elementIdInput.style.display="initial"
   }
 }
 

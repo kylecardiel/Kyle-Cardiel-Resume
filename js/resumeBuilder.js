@@ -104,15 +104,15 @@ var work = {
 		"website" : "http://www.theocc.com",
 	},
 	{
-		"employer" : "SAME AS ABOVE LOOKS STUPID TO REPEAT",
+		"employer" : "",
 		"title" : "System Analyst - Intern",
-		"location" : "Austin, TX",
+		"location" : "",
 		"dates" : "December 2014 - November 2015",
 		"description" : "Analyze a project’s business requirements and approaches dealing with various systems. "
 						+ "Facilitate communication between business end users and technical development team to ensure thorough understanding of project objectives. "
 						+ "Design web application screen/layout to meet project requirements and business user needs. "
 						+ "Design and execute test suites for integration testing.",
-		"website" : "SAME AS ABOVE LOOKS STUPID TO REPEAT",
+		"website" : "",
 	},
 	{
 		"employer" : "Elite Soccer Club",
@@ -157,12 +157,12 @@ var work = {
 		"website" : "http://www.careered.com",
 	},
 	{
-		"employer" : "SAME AS ABOVE LOOKS STUPID TO REPEAT",
+		"employer" : "",
 		"title" : "Staff Auditor",
-		"location" : "Panama City Beach, FL",
+		"location" : "",
 		"dates" : "February 2011 – June 2012",
-		"description" : "Auditing Stuff",
-		"website" : "SAME AS ABOVE LOOKS STUPID TO REPEAT",
+		"description" : "",
+		"website" : "",
 	}
 	]
 };
@@ -252,7 +252,7 @@ var education = {
 			"degree" : "Master of Scence in Computer Science",
 			"majors" : ["Software and System Development"],
 			"date" : "September 2014 - November 2015",
-			"url" : "http://www.depaul.edu",
+			"website" : "http://www.depaul.edu",
 			"courses" : ["Discrete Structures for CS",
 							"Introduction to Programming (Python)",
 							"Data Structures I (Java, Eclipse)",
@@ -278,7 +278,7 @@ var education = {
 			"degree" : "Bachelor of Scence in Business Administration",
 			"majors" : ["Actuarial Scence","Finance"],
 			"date" : "August 2006 - May 2010",
-			"url" : "http://www.drake.edu",
+			"website" : "http://www.drake.edu",
 			"courses" : ["Introduction to Probability I (Exam P)",
 							" Introduction to Probability II (Exam C)",
 							"Statistical Modeling and Data Analysis I (Exam C)",
@@ -310,7 +310,7 @@ var education = {
 			"title" : "Frontend Web Development Nano-Degree",
 			"school" : "Udacity",
 			"date" : "2016 - Present",
-			"url" : "www.Udacity.com",
+			"website" : "www.Udacity.com",
 		}
 	]
 };
@@ -336,11 +336,14 @@ education.display = function() {
 		$edEntryGridLast.append(formattedDegreeInfo);
 		$edEntryGridLast.append(formattedschoolMajor);
 
-		var formattedShoolCoursesStart = HTMLschoolCoursesStart.replace("%school%", currentSchool.name.substring(0, 3));
+		var courseIdTag = currentSchool.name.substring(0, 3).toLowerCase();
+
+		var formattedShoolCoursesStart = HTMLschoolCoursesStart.replace("%school%", courseIdTag).replace("%schoolId%", courseIdTag);
 		$(".education-entry-grid").append(formattedShoolCoursesStart);
 		for (course in education.schools[school].courses){
-			var fromattedSchoolCourses = HTMLschoolCourses.replace(data, currentSchool.courses[course]).replace("%school%", currentSchool.name.substring(0, 3));
-			$edEntryGridLast.append(fromattedSchoolCourses);
+			var fromattedSchoolCourses = HTMLschoolCourses.replace(data, currentSchool.courses[course])
+			var $courseIdTag = "#" + courseIdTag
+			$($courseIdTag).append(fromattedSchoolCourses);
 		}
 
 	}
@@ -368,18 +371,18 @@ education.display();
 
 //Add certifications section later..
 
-function inName(name) {
-	name = name.trim().split(" ");
-	console.log(name);
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase();
-		name[0].slice(1).toLowerCase();
+// function inName(name) {
+// 	name = name.trim().split(" ");
+// 	console.log(name);
+// 	name[1] = name[1].toUpperCase();
+// 	name[0] = name[0].slice(0,1).toUpperCase();
+// 		name[0].slice(1).toLowerCase();
 
-	return name[0] + " " + name[1];
-}
+// 	return name[0] + " " + name[1];
+// }
 
-inName(bio.name);
+// inName(bio.name);
 
-$("#main").append(internationalizeButton);
+// $("#main").append(internationalizeButton);
 $("#mapDiv").append(googleMap);
 

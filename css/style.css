@@ -326,13 +326,13 @@ span {
 .col-12 {width: 100%;}
 
 .col-5-work {
-  width: 41.66%; 
+  width: 41.66%;
   float: left;
   vertical-align: top;
 }
 
 .col-4-work {
-  width: 33.33%; 
+  width: 33.33%;
   float: left;
   vertical-align: top;
 }
@@ -341,4 +341,54 @@ span {
   color: #0000e6;
 }
 
+.col-6-course {
+  width: 50%;
+  text-align: left;
+}
+
+
+.course-btn {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+    border: 0px solid #b3b3b3;
+    border-radius: 7px;
+    background: #f3f3f3;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#f3f3f3));
+    background: -moz-linear-gradient(top, #f3f3f3, #f3f3f3);
+    background: linear-gradient(to bottom, #f3f3f3, #f3f3f3);
+    font: normal normal bold 5px arial;
+    color: #111111;
+    text-decoration: none;
+}
+.course-btn:hover,
+.course-btn:focus {
+    border: 0px solid #ffffff;
+    background: #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+    background: -moz-linear-gradient(top, #ffffff, #ffffff);
+    background: linear-gradient(to bottom, #ffffff, #ffffff);
+    color: #111111;
+    text-decoration: none;
+}
+.course-btn:active {
+    background: #b3b3b3;
+    background: -webkit-gradient(linear, left top, left bottom, from(#b3b3b3), to(#fffaff));
+    background: -moz-linear-gradient(top, #b3b3b3, #fffaff);
+    background: linear-gradient(to bottom, #b3b3b3, #fffaff);
+}
+.course-btn:before{
+    content:  "\0000a0";
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    margin: 0 4px -6px -4px;
+    position: relative;
+    top: -3px;
+    left: 3px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAf0lEQVRIie3SwQrCMBCE4a9SSvDoO4jv/zw+gSgeSxCJXhooFjzI5mR+yG2Z2ZkNnU4ECVe8gt8FaVxMMubgxTMMqxS7YINSTZrymaCmKAHaBXlYxM84BIiuueMY3fuGWtGE8dvgDzzxCNbc0vybtjzyDafa+4R9sEEK1uv8LW/mfyXv0tEAhgAAAABJRU5ErkJggg==") no-repeat left center transparent;
+    background-size: 100% 100%;
+}
 
